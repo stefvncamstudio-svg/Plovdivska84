@@ -1,0 +1,1 @@
+{"name":"plovdivska84-drag","version":"1.0.0","private":true,"type":"commonjs","engines":{"node":">=22"},"scripts":{"start":"node server.cjs","test":"node --test"},"dependencies":{"ws":"8.18.3"}}

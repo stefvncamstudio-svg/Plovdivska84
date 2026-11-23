@@ -1,0 +1,20 @@
+#start{top:auto;bottom:5vh;transform:translateX(-50%);width:min(650px,94vw);padding:18px 24px}
+#pilot-picker,.choices{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+#pilot-picker button,.choices button{margin:0;background:#273733;color:#faebd5;border:1px solid #ffffff35}
+#pilot-picker button[aria-pressed=true]{background:#efae55;color:#201b12}
+#drag-menu{position:fixed;right:24px;top:20px;max-width:min(450px,94vw);background:#17211ef7;border:1px solid #c7996b;padding:16px;z-index:3}
+#drag-open{position:fixed;right:24px;top:20px}
+#drag-menu input,#drag-menu select{padding:8px;background:#222e29;color:#fff;border:1px solid #65776e;font:inherit;max-width:100%}
+#drag-menu fieldset{margin:10px 0;border:1px solid #65776e}
+#drag-menu h2,#drag-menu h3,#drag-menu p{margin:0 0 9px}
+#race-ui{position:fixed;inset:0;pointer-events:none}
+#race-start,#race-instructions,#race-result,#race-progress{position:absolute;background:#14221eed;border:1px solid #94c5b76e;padding:12px;color:#f6ead9}
+#race-start{top:5%;left:50%;transform:translateX(-50%);font:bold 24px system-ui;letter-spacing:.13em;white-space:nowrap}
+#race-instructions{bottom:18px;left:18px}
+#race-result{top:19%;left:50%;transform:translateX(-50%);width:min(535px,94vw);pointer-events:auto}
+#race-progress{top:15px;left:15px}
+#gauge{position:absolute;bottom:10px;right:12px;width:min(310px,47vw);height:auto}
+body.drag-active header,body.drag-active aside,body.drag-active footer,body.drag-active #prompt,body.drag-active #drag-open,body:has(#start:not([hidden])) header,body:has(#start:not([hidden])) footer,body:has(#start:not([hidden])) aside{display:none}
+@media(max-width:720px){#race-instructions{font-size:12px;bottom:6px;left:6px;max-width:51vw}#race-start{font-size:16px}}
+#quick-drag{background:#efae55;color:#1e221e}
+#local-notice{padding:8px 10px;color:#f7d8a6;border-left:3px solid #efae55}

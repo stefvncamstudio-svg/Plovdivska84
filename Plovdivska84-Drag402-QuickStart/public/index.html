@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Пазарджик · Пловдивска 84</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#202a25;color:#f9efdf;font:15px system-ui,sans-serif;overflow:hidden}#scene{position:fixed;inset:0}#scene canvas{display:block}header,aside,footer,#prompt,#start{position:fixed;background:#17211eea;border:1px solid #ffffff28;box-shadow:0 8px 26px #0003}header{left:24px;top:24px;padding:15px 20px;border-left:4px solid #efa94a;max-width:calc(100vw - 48px)}h1{margin:0;font-size:26px;line-height:1.1}small{display:block;color:#efb974;letter-spacing:.12em;margin-bottom:6px}p{margin:8px 0 0;color:#e0d8c8}aside{right:24px;bottom:24px;padding:9px}#map{display:block;width:230px;height:145px}#telemetry{display:flex;justify-content:space-between;padding:5px 3px 0;font-variant-numeric:tabular-nums}a{color:#e9c18f;font-size:11px}footer{left:24px;bottom:24px;padding:9px 12px;color:#e0d8c8}#prompt{bottom:100px;left:50%;transform:translateX(-50%);padding:12px 18px;font-size:20px;font-weight:750;white-space:nowrap}kbd{background:#f2dec4;color:#17211e;border-radius:4px;padding:2px 6px;font-weight:800}#start{left:50%;top:50%;transform:translate(-50%,-50%);padding:22px 26px;max-width:90vw;width:380px}button{background:#efae55;color:#201b12;border:0;padding:10px 15px;margin-top:14px;font:inherit;font-weight:750;cursor:pointer}[hidden]{display:none!important}@media(max-width:720px){aside{right:12px;bottom:12px}#map{width:155px;height:98px}header{left:12px;top:12px}footer{display:none}}
+#view-name{position:fixed;top:24px;right:24px;background:#17211eea;padding:11px 16px;border:1px solid #ffffff28;font-weight:650}
+</style>
+<link rel="stylesheet" href="drag-ui.css">
+</head>
+<body>
+<div id="scene"></div>
+<header><small>ПАЗАРДЖИК / ПЛОВДИВСКА 84</small><h1 id="title">Паркираният автомобил</h1><p id="objective">Намери колата в паркинга на КАТ.</p></header>
+<aside><canvas id="map" width="460" height="290"></canvas><div id="telemetry"><span id="mode">Пеша</span><span id="speed"></span></div><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors</a></aside>
+<footer><kbd>W A S D</kbd> Движение &nbsp; <kbd>Shift</kbd> Тичане &nbsp; <kbd>E</kbd> Качване / слизане &nbsp; <kbd>Space</kbd> Спирачка &nbsp; <kbd>R</kbd> Рестарт &nbsp; <kbd>1–9</kbd> <kbd>[ ]</kbd> Кадри</footer>
+<div id="prompt" hidden></div>
+<div id="view-name" hidden></div>
+<div id="start">
+  <small>ПАЗАРДЖИК</small><h1>Пловдивска 84</h1>
+  <div id="pilot-picker" role="group" aria-label="Избор на пилот">
+    <button data-pilot="1" aria-pressed="true">Пилот 1</button><button data-pilot="2" aria-pressed="false">Пилот 2</button><button data-pilot="3" aria-pressed="false">Пилот 3</button>
+  </div>
+  <div class="choices"><button id="quick-drag">Започни драг · 402 м</button><button id="play">Свободно шофиране</button></div>
+</div>
+<button id="drag-open" hidden>Драг · 402 м</button>
+<section id="drag-menu" hidden>
+  <h2>Драг · 402 м</h2>
+  <p id="local-notice" hidden>За игра с приятел стартирай „Start-Online-Mac.command“ от главната папка.</p>
+  <label>Кола <select id="drag-car"><option value="skyline">Skyline</option><option value="supra">Toyota Supra</option><option value="s2000">Honda S2000</option></select></label>
+  <p id="drag-stats"></p>
+  <div class="choices"><button id="training">Тренировка</button><button id="record">Личен рекорд</button><button id="city">Към града</button></div>
+  <fieldset><legend>Онлайн мач · до две победи</legend>
+    <button id="create-room">Създай стая</button>
+    <input id="room-code" aria-label="Код на стаята" maxlength="6" size="7" autocomplete="off">
+    <button id="join-room">Влез</button>
+    <p id="room-state" aria-live="polite"></p>
+    <div class="choices"><button id="ready" hidden>Готов</button><button id="again" hidden>Реванш</button><button id="leave" hidden>Напусни</button></div>
+  </fieldset>
+  <p id="awards"></p>
+  <div class="choices"><button data-unlock="paint">Окраска · 10</button><button data-unlock="rim">Джанти · 10</button><button data-unlock="number">Номер · 10</button></div>
+</section>
+<section id="race-ui" hidden>
+  <div id="race-start"></div><div id="race-progress"></div>
+  <div id="race-instructions"><kbd>W</kbd> Газ <kbd>Space</kbd> Потегли <kbd>A</kbd> ↑ предавка <kbd>S</kbd> ↓ предавка <kbd>Esc</kbd> Изход</div>
+  <canvas id="gauge" width="620" height="420" aria-label="Оборотомер"></canvas>
+  <section id="race-result" hidden aria-live="polite"></section>
+</section>
+<script src="three.min.js"></script>
+<script src="map.js"></script>
+<script src="streetscape.js"></script>
+<script src="modern.js"></script>
+<script src="expansion.js"></script>
+<script src="landmarks.js"></script>
+<script src="access.js"></script>
+<script src="drag-core.js"></script>
+<script src="track.js"></script>
+<script src="drag-models.js"></script>
+<script src="drag-ui.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
